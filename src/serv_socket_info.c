@@ -18,6 +18,8 @@ struct servSocketInfo servSocketInfoConstruct(void)
     struct servSocketInfo thisStruct;
     thisStruct.opt = true;
     thisStruct.max_clients = 2;
+    thisStruct.x_player = 0;
+    thisStruct.y_player = 0;
     thisStruct.game_board = gameBoardConstruct();
 
     return (thisStruct);
