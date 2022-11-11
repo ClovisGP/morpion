@@ -37,15 +37,18 @@ int board_modification(struct gameBoard *thisStruct, int line, int col)
 int case_modification(struct gameBoard *thisStruct, char *str_msg) //function to has to be clean
 {
     char *delim = ":";
-    char *target_line = strtok_r(strdup(str_msg), delim, &str_msg);
-    char *target_col = strtok_r(strdup(str_msg), delim, &str_msg);
+    char *str_tmp = strdup(str_msg);
+    char *target_line = strtok(str_tmp, delim);
+    char *target_col = strtok(NULL, delim);
     if (target_line && target_col) {
         int i_target_line = atoi(target_line);
         int i_target_col = atoi(target_col);
         if (i_target_line < 1 || i_target_line > thisStruct->lenght) return (-1);
         if (i_target_col < 1 || i_target_col > thisStruct->lenght) return (-1);
+        free(str_tmp);
         return (board_modification(thisStruct, i_target_line, i_target_col));
     } else {
+        free(str_tmp);
         return (-1);
     }
 }

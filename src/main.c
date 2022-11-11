@@ -12,19 +12,6 @@ opti certain offichage
 #define FALSE  0 
 #define PORT 8888
 
-// int main(int ac, char **av) {
-//     struct gameBoard this = gameBoardConstruct();
-//     this.board = this.board_generation(3);
-//     this.case_modification(&this, "2:2");
-//     this.case_modification(&this, "2:3");
-//     printf("%s\n", this.board[0]);
-//     printf("%s\n", this.board[1]);
-//     printf("%s\n", this.board[2]);
-//     gameBoardDestroy(&this);
-// }
-
-
-
 int serverInitialization(struct servSocketInfo *SServerInfo)
 {
     //initialise all client_socket[] to 0 so not checked 
