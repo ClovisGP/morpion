@@ -1,15 +1,10 @@
 /*
-leak memoire de slect
-Si un jour quitte
 Le client
 Voir un systeme qui detecte si tu gagne
 opti certain offichage
 */
 
 #include "../Include/proto.h"
-     
-#define TRUE   1 
-#define FALSE  0 
 
 int close_socket(struct servSocketInfo *SServerInfo)
 {
