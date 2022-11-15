@@ -4,17 +4,13 @@ void new_connection(struct servSocketInfo *SServerInfo)
 {
     if (FD_ISSET(SServerInfo->master_socket, &(SServerInfo->readfds))) {  
         if ((SServerInfo->new_socket = accept(SServerInfo->master_socket, 
-            (struct sockaddr *)&(SServerInfo->address), (socklen_t*)&(SServerInfo->addrlen)))<0)  
-        {
-            perror("accept");  
-            exit(EXIT_FAILURE);  
-        }  
-        
+            (struct sockaddr *)&(SServerInfo->address), (socklen_t*)&(SServerInfo->addrlen)))<0) {
+            perror("accept");
+            exit(EXIT_FAILURE);
+        }
         player_assign(SServerInfo);
-                
-        //add new socket to array of sockets 
+        sendFirstDisplay(SServerInfo);
         for (SServerInfo->i = 0; SServerInfo->i < SServerInfo->max_clients; SServerInfo->i++) {  
-            //if position is empty 
             if(SServerInfo->client_socket[SServerInfo->i] == 0) { 
                 SServerInfo->client_socket[SServerInfo->i] = SServerInfo->new_socket;  
                 printf("Adding to list of sockets as %d\n" , SServerInfo->i);        

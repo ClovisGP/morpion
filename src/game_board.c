@@ -34,7 +34,7 @@ int board_modification(struct gameBoard *thisStruct, int line, int col)
     return (1);
 }
 
-int case_modification(struct gameBoard *thisStruct, char *str_msg) //function to has to be clean
+int case_modification(struct gameBoard *thisStruct, char *str_msg)
 {
     char *delim = ":";
     char *str_tmp = strdup(str_msg);
@@ -56,9 +56,9 @@ int case_modification(struct gameBoard *thisStruct, char *str_msg) //function to
 /**
  * Create a new strcut gameBoard and initialize it
 */
-struct gameBoard gameBoardConstruct(void) {
+struct gameBoard gameBoardConstruct(int board_size) {
     struct gameBoard thisStruct;
-    thisStruct.lenght = 3;
+    thisStruct.lenght = board_size;
     thisStruct.currentPlayer = 'x';
     thisStruct.board_generation = board_generation;
     thisStruct.case_modification = case_modification;

@@ -6,7 +6,8 @@ SRC =	$(SRC_DIR)/main.c	\
 		$(SRC_DIR)/game_board.c	\
 		$(SRC_DIR)/serv_socket_info.c \
 		$(SRC_DIR)/new_client.c			\
-		$(SRC_DIR)/msg_management.c
+		$(SRC_DIR)/msg_management.c		\
+		$(SRC_DIR)/arg_management.c
 
 BINARY	=	my_morpion
 

@@ -11,5 +11,5 @@ struct gameBoard {
 };
 
 int gameBoardDestroy(struct gameBoard *);
-struct gameBoard gameBoardConstruct(void);
+struct gameBoard gameBoardConstruct(int board_size);
 #endif /* !GAME_BOARD_H_ */

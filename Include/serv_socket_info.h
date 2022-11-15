@@ -19,6 +19,7 @@
 #define CASEALREADYTAKEN "This case is already taken, please enter a valide position\n\0"
 
 struct servSocketInfo {
+    bool is_server_running;
     int opt;  
     int master_socket;
     int addrlen;
@@ -29,7 +30,8 @@ struct servSocketInfo {
     int i;
     int valread;
     int sd;  
-    int max_sd;  
+    int max_sd;
+    int port;
     struct sockaddr_in address;
     char buffer[1025]; 
     fd_set readfds;
@@ -39,9 +41,9 @@ struct servSocketInfo {
 
 };
 
-int sendUpdateToEveryone(struct servSocketInfo *thisStruct); ///in development
-
-struct servSocketInfo servSocketInfoConstruct(void);
+int sendUpdateToEveryone(struct servSocketInfo *thisStruct);
+struct servSocketInfo servSocketInfoConstruct(int port, int board_size);
 int servSocketInfoDestroy(struct servSocketInfo *thisStruct);
+int sendFirstDisplay(struct servSocketInfo *thisStruct);
 
 #endif /* !SERV_SOCKET_INFO_H_ */
