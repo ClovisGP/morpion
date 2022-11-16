@@ -56,7 +56,7 @@ int serverInitialization(struct servSocketInfo *SServerInfo)
         exit(EXIT_FAILURE);  
     }  
     printf("Listener on port %d \n", SServerInfo->port);  
-    if (listen(SServerInfo->master_socket, 2) < 0) {
+    if (listen(SServerInfo->master_socket, 30) < 0) {
         perror("listen");
         exit(EXIT_FAILURE);  
     }

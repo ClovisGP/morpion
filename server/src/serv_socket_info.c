@@ -55,7 +55,7 @@ struct servSocketInfo servSocketInfoConstruct(int port, int board_size)
     this_struct.port = port;
     this_struct.is_server_running = true;
     this_struct.opt = true;
-    this_struct.max_clients = 2;
+    this_struct.max_clients = 30;
     this_struct.x_player = 0;
     this_struct.y_player = 0;
     this_struct.game_board = gameBoardConstruct(board_size);
