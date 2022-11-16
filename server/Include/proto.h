@@ -17,10 +17,16 @@
 #define SOCKST struct sockaddr_in
 
 
+int find_board_size(int ac , char *av[]);
 void new_connection(struct servSocketInfo *SServerInfo);
 int player_assign(struct servSocketInfo *SServerInfo);
 int check_player(struct servSocketInfo *SServerInfo);
 int find_port(int ac , char *av[]);
-int find_board_size(int ac , char *av[]);
+
+/*
+Did you know the story of an optimistic guy?
+As he fell from an immense height,
+on each floor he said "Jusqu'ici, tout va bien" (translation: "so far all is well") while laughing.
+And no, there is no end to this story, just a fall (French pun).*/
 
 #endif /* !PROTO_H_ */
