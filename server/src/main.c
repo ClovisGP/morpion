@@ -6,6 +6,10 @@ opti certain offichage
 
 #include "../Include/proto.h"
 
+/**
+ * This function manages the deconnection and the closing of a socket
+ * @param SServerInfo pointer on the main class servSocketInfo
+*/
 int close_socket(struct servSocketInfo *SServerInfo)
 {
     int tmp_sd = SServerInfo->sd;
@@ -27,7 +31,11 @@ int close_socket(struct servSocketInfo *SServerInfo)
     return (0);
 }
 
-int serverInitialization(struct servSocketInfo *SServerInfo) ///une send everyone quittéer svp si on ferme
+/**
+ * Initailize the server
+ * @param SServerInfo pointer on the main class servSocketInfo
+*/
+int serverInitialization(struct servSocketInfo *SServerInfo)
 {
     for (SServerInfo->i = 0; SServerInfo->i < SServerInfo->max_clients; SServerInfo->i++) {  
         SServerInfo->client_socket[SServerInfo->i] = 0;  
