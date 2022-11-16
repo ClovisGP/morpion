@@ -22,8 +22,12 @@ make fclean
 After setting up the project, you can run this command for launch the server. Carefull, the port and size arguments are both mandatory despite the fact that if the game board size is unvailable, the size is going to be set to the default size of 3 case.
 Finally, the port number has to be between 1 and 9999. And the size, between 3 and 10.
 ```
-./my_morpion port-[portNumber] size-[gameBoardSize]
+./my_morpion_server port-[portNumber] size-[gameBoardSize]
 ```
 
+And for the client
+```
+./my_morpion_client port-[portNumber]
+```
 
 Clovis GILLES 15/11/2022

@@ -4,6 +4,7 @@
 
 /**
  * Initialize the game board
+ * @param lenght the width and heigh of the board game
 */
 char **board_generation(int lenght)
 {
@@ -23,18 +24,29 @@ char **board_generation(int lenght)
     return (board);
 }
 
-int board_modification(struct gameBoard *thisStruct, int line, int col)
+/**
+ * Manage the change of a case
+ * @param this_struct the struct which contain the gameboard
+ * @param line the target line
+ * @param col the target column
+*/
+int board_modification(struct gameBoard *this_struct, int line, int col)
 {
-    if (thisStruct->board[line - 1][col - 1] == '-') {
-        thisStruct->board[line - 1][col - 1] = thisStruct->currentPlayer;
-        if (thisStruct->currentPlayer == 'x') thisStruct->currentPlayer = 'o';
-        else thisStruct->currentPlayer = 'x';
+    if (this_struct->board[line - 1][col - 1] == '-') {
+        this_struct->board[line - 1][col - 1] = this_struct->currentPlayer;
+        if (this_struct->currentPlayer == 'x') this_struct->currentPlayer = 'o';
+        else this_struct->currentPlayer = 'x';
         return (0);
     }
     return (1);
 }
 
-int case_modification(struct gameBoard *thisStruct, char *str_msg)
+/**
+ * Pre-manage the change of a case
+ * @param this_struct the struct which contain the gameboard
+ * @param str_msg the request of the message
+*/
+int case_modification(struct gameBoard *this_struct, char *str_msg)
 {
     char *delim = ":";
     char *str_tmp = strdup(str_msg);
@@ -43,10 +55,10 @@ int case_modification(struct gameBoard *thisStruct, char *str_msg)
     if (target_line && target_col) {
         int i_target_line = atoi(target_line);
         int i_target_col = atoi(target_col);
-        if (i_target_line < 1 || i_target_line > thisStruct->lenght) return (-1);
-        if (i_target_col < 1 || i_target_col > thisStruct->lenght) return (-1);
+        if (i_target_line < 1 || i_target_line > this_struct->lenght) return (-1);
+        if (i_target_col < 1 || i_target_col > this_struct->lenght) return (-1);
         free(str_tmp);
-        return (board_modification(thisStruct, i_target_line, i_target_col));
+        return (board_modification(this_struct, i_target_line, i_target_col));
     } else {
         free(str_tmp);
         return (-1);
@@ -54,26 +66,28 @@ int case_modification(struct gameBoard *thisStruct, char *str_msg)
 }
 
 /**
- * Create a new strcut gameBoard and initialize it
+ * Create a new struct gameBoard and initialize it
+ * @param board_size the width and height of the gameboard
 */
 struct gameBoard gameBoardConstruct(int board_size) {
-    struct gameBoard thisStruct;
-    thisStruct.lenght = board_size;
-    thisStruct.currentPlayer = 'x';
-    thisStruct.board_generation = board_generation;
-    thisStruct.case_modification = case_modification;
-    thisStruct.board = thisStruct.board_generation(thisStruct.lenght);
-    return (thisStruct);
+    struct gameBoard this_struct;
+    this_struct.lenght = board_size;
+    this_struct.currentPlayer = 'x';
+    this_struct.board_generation = board_generation;
+    this_struct.case_modification = case_modification;
+    this_struct.board = this_struct.board_generation(this_struct.lenght);
+    return (this_struct);
 }
 
 /**
- * Free all the object of the gameBoard
+ * Free all the object of the gameBoard struct
+ * @param this_struct The target struct
 */
-int gameBoardDestroy(struct gameBoard *thisStruct)
+int gameBoardDestroy(struct gameBoard *this_struct)
 {
-    for (int indexArray = 0; thisStruct->board[indexArray]; indexArray++) {
-        free(thisStruct->board[indexArray]);
+    for (int indexArray = 0; this_struct->board[indexArray]; indexArray++) {
+        free(this_struct->board[indexArray]);
     }
-    free(thisStruct->board);
+    free(this_struct->board);
     return (0);
 }

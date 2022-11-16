@@ -1,5 +1,9 @@
 #include "../Include/clie_socket_info.h"
 
+/**
+ * Create and initialize a clie_socket_info struct
+ * @param port the port of the server
+*/
 struct clie_socket_info clie_socket_info_construct(int port)
 {
     struct clie_socket_info this_struct;
@@ -28,6 +32,11 @@ struct clie_socket_info clie_socket_info_construct(int port)
     return (this_struct);
 }
 
+/**
+ * Free all the object of the structure.
+ * Currently empty because useless
+ * @param thisStruct the structure to clean
+*/
 int clie_socket_info_destroy(struct clie_socket_info *thisStruct)
 {
 

@@ -56,14 +56,19 @@ int serverInitialization(struct servSocketInfo *SServerInfo) ///une send everyon
     puts("Waiting for connections ...");
     return (0);
 }
-    
+
+/**
+ * It is the main of the project
+*/
 int main(int ac, char *av[])  
 {
+    // Initialisation
     int tmp_port = find_port(ac, av);
     if (tmp_port == -1) return (-1);
     struct servSocketInfo SServerInfo = servSocketInfoConstruct(tmp_port, find_board_size(ac, av));
     serverInitialization(&SServerInfo);
 
+    // Running loop
     while(SServerInfo.is_server_running) { 
         FD_ZERO(&(SServerInfo.readfds));  
         FD_SET(SServerInfo.master_socket, &(SServerInfo.readfds));  

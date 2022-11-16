@@ -2,11 +2,12 @@
 
 #include "../Include/proto.h"
 
-#define MAX 80
-#define PORT 8080
-#define SA struct sockaddr
 
-void func(struct clie_socket_info *socket_info)
+/**
+ * This is the loop which run all the client
+ * @param socket_info the main clie_socket_info struct of the program
+*/
+void running_loop(struct clie_socket_info *socket_info)
 {
     char buff[MAX];
     int n;
@@ -40,14 +41,18 @@ void func(struct clie_socket_info *socket_info)
     }
 }
  
+/**
+ * This is the main of the client project
+ * @param ac the number of arguments
+ * @param ac the array of argument
+*/
 int main(int ac, char **av)
 {
     int tmp_port = find_port(ac, av);
     if (tmp_port == -1) return (-1);
     struct clie_socket_info socket_info = clie_socket_info_construct(tmp_port);
- 
-    func(&socket_info);
-
+    running_loop(&socket_info);
     close(socket_info.sockfd);
     clie_socket_info_destroy(&socket_info);
+    return (0);
 }

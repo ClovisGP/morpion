@@ -1,5 +1,10 @@
 #include "../Include/proto.h"
 
+/**
+ * This function check and search the port argument
+ * @param ac the number of arguments
+ * @param ac the array of argument
+*/
 int find_port(int ac, char *av[])
 {
     char *delim = "-";

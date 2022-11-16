@@ -1,5 +1,9 @@
 #include "../Include/proto.h"
 
+/**
+ * Manage the new connection from a new client
+ * @param SServerInfo pointer on the main class servSocketInfo
+*/
 void new_connection(struct servSocketInfo *SServerInfo)
 {
     if (FD_ISSET(SServerInfo->master_socket, &(SServerInfo->readfds))) {  
@@ -20,7 +24,10 @@ void new_connection(struct servSocketInfo *SServerInfo)
     }  
 }
 
-
+/**
+ * Assign a role to the new client, player x, player o, viewer
+ * @param SServerInfo pointer on the main class servSocketInfo
+*/
 int player_assign(struct servSocketInfo *SServerInfo)
 {
     printf("New connection , socket fd is %d , ip is : %s , port : %d \

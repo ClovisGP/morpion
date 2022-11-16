@@ -1,5 +1,9 @@
 #include "../Include/proto.h"
 
+/**
+ * Check the validity of the request
+ * @param SServerInfo pointer on the main class servSocketInfo
+*/
 int check_command(struct servSocketInfo *SServerInfo)
 {
     switch (SServerInfo->game_board.case_modification(&SServerInfo->game_board, SServerInfo->buffer)) {
@@ -16,6 +20,10 @@ int check_command(struct servSocketInfo *SServerInfo)
 
 }
 
+/**
+ * Check if this is the good player who ask for play
+ * @param SServerInfo pointer on the main class servSocketInfo
+*/
 int check_player(struct servSocketInfo *SServerInfo)
 {
     if (SServerInfo->game_board.currentPlayer == 'x') {
