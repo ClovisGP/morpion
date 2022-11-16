@@ -16,16 +16,18 @@ int close_socket(struct servSocketInfo *SServerInfo)
     close(SServerInfo->sd);  
     SServerInfo->client_socket[SServerInfo->i] = 0;
     if (tmp_sd == SServerInfo->x_player) {
+        sendQUITToEveryone(SServerInfo);
         SServerInfo->x_player = 0;
         SServerInfo->is_server_running = false;
     } else if (tmp_sd == SServerInfo->y_player) {
+        sendQUITToEveryone(SServerInfo);
         SServerInfo->y_player = 0;
         SServerInfo->is_server_running = false;
     }
     return (0);
 }
 
-int serverInitialization(struct servSocketInfo *SServerInfo)
+int serverInitialization(struct servSocketInfo *SServerInfo) ///une send everyone quittéer svp si on ferme
 {
     for (SServerInfo->i = 0; SServerInfo->i < SServerInfo->max_clients; SServerInfo->i++) {  
         SServerInfo->client_socket[SServerInfo->i] = 0;  

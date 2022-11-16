@@ -17,6 +17,8 @@
 #define BADPLAYER "Sorry but it is not your turn.\n\0"
 #define BADCOMMAND "The comand must be LINE:COLUMN and must be a coordinate of the game board like example 1:2\n\0"
 #define CASEALREADYTAKEN "This case is already taken, please enter a valide position\n\0"
+#define YOURTURN "your turn to play\n\0"
+#define QUIT "QUIT : A player was deconnected\n\0"
 
 struct servSocketInfo {
     bool is_server_running;
@@ -42,6 +44,7 @@ struct servSocketInfo {
 };
 
 int sendUpdateToEveryone(struct servSocketInfo *thisStruct);
+int sendQUITToEveryone(struct servSocketInfo *thisStruct);
 struct servSocketInfo servSocketInfoConstruct(int port, int board_size);
 int servSocketInfoDestroy(struct servSocketInfo *thisStruct);
 int sendFirstDisplay(struct servSocketInfo *thisStruct);

@@ -7,8 +7,19 @@ int sendUpdateToEveryone(struct servSocketInfo *thisStruct)
         for (int indexLine = 0; thisStruct->game_board.board[indexLine]; indexLine++) {
             send(thisStruct->client_socket[index], thisStruct->game_board.board[indexLine], strlen(thisStruct->game_board.board[indexLine]), 0) != strlen(thisStruct->game_board.board[indexLine]);
         }
-        send(thisStruct->client_socket[index], "**********\n", strlen("**********\n"), 0) != strlen("**********\n");//ok ca bug complètement
-    }  
+        send(thisStruct->client_socket[index], "**********\n", strlen("**********\n"), 0) != strlen("**********\n");
+    }
+    return (0);
+}
+
+int sendQUITToEveryone(struct servSocketInfo *thisStruct)
+{
+    for (int index = 0; index < thisStruct->max_clients; index++) {
+        // Because i is the socket which is already closed
+        if (index != thisStruct->i)
+            send(thisStruct->client_socket[index], QUIT, strlen(QUIT), 0) != strlen(QUIT);
+    }
+    return (0);
 }
 
 int sendFirstDisplay(struct servSocketInfo *thisStruct)
@@ -18,6 +29,7 @@ int sendFirstDisplay(struct servSocketInfo *thisStruct)
         send(thisStruct->new_socket, thisStruct->game_board.board[indexLine], strlen(thisStruct->game_board.board[indexLine]), 0) != strlen(thisStruct->game_board.board[indexLine]);
     }  
     send(thisStruct->new_socket, "**********\n", strlen("**********\n"), 0) != strlen("**********\n");
+    return (0);
 }
 
 /**

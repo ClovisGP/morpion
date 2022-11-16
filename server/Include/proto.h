@@ -11,10 +11,10 @@
 #include "serv_socket_info.h"
 #include <sys/time.h>
 
-// #define ERROR_CODE -1
-// #define SUCCESS_CODE 0
-// #define MAX_BUFF_SIZE 4096
-// #define SOCKST struct sockaddr_in
+#define ERROR_CODE -1
+#define SUCCESS_CODE 0
+#define MAX_BUFF_SIZE 4096
+#define SOCKST struct sockaddr_in
 
 
 void new_connection(struct servSocketInfo *SServerInfo);

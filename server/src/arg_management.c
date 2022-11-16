@@ -10,13 +10,13 @@ int find_port(int ac, char *av[])
             int port = atoi(raw_port);
 
             if (port >= 9999 || port < 1) {
-                perror("Error: the port number is unavailable. It must be between 1 and 9999.");
+                printf("Error: the port number is unavailable. It must be between 1 and 9999.");
                 return (-1);
             }
             return (port);
         }
     }
-    perror("Error: the port number is unavailable.");
+    printf("Error: the port number is unavailable.");
     return (-1);
 }
 
